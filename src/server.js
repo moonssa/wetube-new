@@ -1,21 +1,13 @@
 import express from "express";
+import morgan from "morgan"; // external middleware for logger
 
 
 const PORT=4000;
 const app = express();
 
-const loggerMiddleware = (req, res, next) => {
-    console.log(`${req.method}  ${req.url}`);
-    next();
-}
+const loggerMiddleware = morgan("dev");
 
-const privateMiddleware = (req,res,next) => {
-    if(req.url === "/protected"){
-        return res.send("<h1>This page not allowed</h1>");
-    }
-    console.log("allow this page");
-    next();
-}
+
 const handleHome = (req,res) => {
     return res.send("wawoo!!");
 //    res.end();
@@ -30,7 +22,8 @@ const handleProtected = (req, res) => {
 }
 
 app.use(loggerMiddleware);  // global middleware
-app.use(privateMiddleware);
+
+
 app.get("/",handleHome);
 app.get("/login", handleLogin);
 app.get("/protected",handleProtected);
