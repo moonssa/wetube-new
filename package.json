@@ -1,0 +1,27 @@
+{
+  "name": "wetube-new",
+  "version": "1.0.0",
+  "description": "best way to watch videos.",
+  "scripts": {
+    "dev": "nodemon --exec babel-node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moonssa/wetube-new.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/moonssa/wetube-new/issues"
+  },
+  "homepage": "https://github.com/moonssa/wetube-new#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.8",
+    "nodemon": "^2.0.15"
+  }
+}
