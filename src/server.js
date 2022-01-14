@@ -1,5 +1,5 @@
 import express from "express";
-import res from "express/lib/response";
+
 
 const PORT=4000;
 const app = express();
@@ -11,27 +11,30 @@ const loggerMiddleware = (req, res, next) => {
 
 const privateMiddleware = (req,res,next) => {
     if(req.url === "/protected"){
-        res.send("<h1>This page not allowed</h1>")
+        return res.send("<h1>This page not allowed</h1>");
     }
+    console.log("allow this page");
     next();
 }
 const handleHome = (req,res) => {
-    res.send("wawoo!!");
+    return res.send("wawoo!!");
 //    res.end();
 }
 
 const handleLogin = (req,res) => {
-    res.send("Login page welcome");
+    return res.send("Login page welcome");
 }
 
 const handleProtected = (req, res) => {
-    res.send("Welcome my private page")
+    return res.send("Welcome my private page")
 }
+
 app.use(loggerMiddleware);  // global middleware
 app.use(privateMiddleware);
 app.get("/",handleHome);
 app.get("/login", handleLogin);
 app.get("/protected",handleProtected);
+
 const handleListening = () => 
     console.log(`Server listening on port http://localhost:${PORT}`);
 
