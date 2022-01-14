@@ -4,8 +4,15 @@ import res from "express/lib/response";
 const PORT=4000;
 const app = express();
 
-const gossipMiddleware = (req, res, next) => {
-    console.log(`Someone is going to ${req.url}`);
+const loggerMiddleware = (req, res, next) => {
+    console.log(`${req.method}  ${req.url}`);
+    next();
+}
+
+const privateMiddleware = (req,res,next) => {
+    if(req.url === "/protected"){
+        res.send("<h1>This page not allowed</h1>")
+    }
     next();
 }
 const handleHome = (req,res) => {
@@ -17,8 +24,14 @@ const handleLogin = (req,res) => {
     res.send("Login page welcome");
 }
 
-app.get("/", gossipMiddleware, handleHome);
+const handleProtected = (req, res) => {
+    res.send("Welcome my private page")
+}
+app.use(loggerMiddleware);  // global middleware
+app.use(privateMiddleware);
+app.get("/",handleHome);
 app.get("/login", handleLogin);
+app.get("/protected",handleProtected);
 const handleListening = () => 
     console.log(`Server listening on port http://localhost:${PORT}`);
 
