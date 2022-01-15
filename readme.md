@@ -65,3 +65,21 @@ node JS 를 위한 서버프레임워크. 안정적.
 > npm run dev
 
 -> 파일이 바뀌면 자동으로 restart.
+
+<4장>
+
+/ -> homepage
+/join
+/login
+/search
+
+/edit-user  -> /users/edit
+/delete-user -> /users/delete
+
+/watch-video  -> /videos/watch
+/edit-video -> /videos/edit
+/delete-video -> /vidos/delete
+/videos/comments
+/videos/comments/delete
+
+=> router 를 사용하여 도메인화 한다. 
