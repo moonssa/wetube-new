@@ -120,6 +120,10 @@ pug 파일에 다음과 같이 추가한다.
 
 >link(rel="stylesheet" href="https://unpkg.com/mvp.css">)
 
-
+pug syntax:
+1. 태그하나에 변수하나
+    >h1=pageTitle
+2. 태그에 변수와 문자 혼용해서 쓸경우
+    >h1 #{pageTitle} hahaha
 
 
