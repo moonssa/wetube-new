@@ -99,3 +99,19 @@ https://www.regexpal.com
 
 \w+: 모든 문자, 숫자 선택
 \d+: 모든 숫자 선택
+
+<5장>
+
+ 
+Pug:
+1. 퍼그를 설치한다.
+    >npm i pug
+    >https://www.npmjs.com/package/pug
+
+2. express 에게 view engine으로 pug를 쓸 것을 알려준다.
+    >app.set("view engine", "pug")
+
+3. 퍼그 파일들을 저장할 default directory인   **views**를 만든다.
+
+
+
