@@ -34,7 +34,8 @@ node JS 를 위한 서버프레임워크. 안정적.
 -> 자바스크립트 컴파일러
 
 -> 최신 자바스크립트를 old 버전의 자바스크립트로 바꾸어주는 툴킷.
--> babel  [클릭](https://babeljs.io/setup#installation)
+
+babel :  [클릭](https://babeljs.io/setup#installation)
 1. > npm install --save-dev @babel/core
 
     -> babel package install
@@ -68,18 +69,33 @@ node JS 를 위한 서버프레임워크. 안정적.
 
 <4장>
 
-/ -> homepage
-/join
-/login
-/search
 
-/edit-user  -> /users/edit
-/delete-user -> /users/delete
+global router : 홈페이지에서 바로 갈수 있는 페이지들.
+- / -> homepage
+- /join
+- /login
+- /search
 
-/watch-video  -> /videos/watch
-/edit-video -> /videos/edit
-/delete-video -> /vidos/delete
-/videos/comments
-/videos/comments/delete
+user router
+- /users/:id -> See user
+- /users/logout
+- /users/edit -> Edit my profile
+- /users/delete -> Delete my profile
+
+video router
+- /videos/:id  -> see Video
+- /videos/:id/edit -> Edit video
+- /vidos/:id/delete
+- /videos/upload
+- /videos/comments
+- /videos/comments/delete
 
 => router 를 사용하여 도메인화 한다. 
+
+<4장> 
+
+정규표현식 테스트 사이트
+https://www.regexpal.com
+
+\w+: 모든 문자, 숫자 선택
+\d+: 모든 숫자 선택
