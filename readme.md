@@ -113,5 +113,13 @@ Pug:
 
 3. 퍼그 파일들을 저장할 default directory인   **views**를 만든다.
 
+<5.6> MVP Style : 기본적인 CSS세팅을 가능하게 해준다.
+https://andybrewer.github.io/mvp/
+
+pug 파일에 다음과 같이 추가한다. 
+
+>link(rel="stylesheet" href="https://unpkg.com/mvp.css">)
+
+
 
 
