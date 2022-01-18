@@ -167,3 +167,9 @@ MongoDB 설치 (MacOS용)
 
 8. mongo 실행시켜서 아이피주소 받는다.
 mongodb://127.0.0.1:27017/
+
+CRUD : 
+- create
+- read
+- update
+- delete
