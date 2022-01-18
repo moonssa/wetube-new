@@ -13,7 +13,8 @@ app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 app.use(loggerMiddleware); 
 
-
+// It parses incoming requests with urlencoded payloads and is based on body-parser.
+app.use(express.urlencoded({extended : true}));
 
 app.use("/", globalRouter);
 app.use("/users", userRouter);

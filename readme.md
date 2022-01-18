@@ -127,3 +127,12 @@ pug syntax:
     >h1 #{pageTitle} hahaha
 
 
+<6장>
+**req.body**
+
+req.body에는 form을 통해 submit된 데이터의 키-값 쌍을 포함합니다.
+기본적으로는 undefined이며 express.json() 또는 express.urlencoded()와 같은 바디 파싱 미들웨어를 사용할 때 값을 받아옵니다.
+built in middleware
+https://expressjs.com/ko/api.html#express.urlencoded
+
+>app.use(express.urlencoded({ extended: true }));
