@@ -1,0 +1,9 @@
+extends base.pug
+
+block content
+    h4 Upload new video
+    form(method="POST")
+        input(name="title" placeholder="Video Title")
+        input(name="rating" placeholder="1~5")
+        input(name="comments" placeholder="comments")
+        input(value="Upload Video" type="submit")
