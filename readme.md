@@ -136,3 +136,34 @@ built in middleware
 https://expressjs.com/ko/api.html#express.urlencoded
 
 >app.use(express.urlencoded({ extended: true }));
+
+
+<mongo DB>
+
+
+MongoDB 다운로드 사이트
+https://docs.mongodb.com/manual/installation
+
+MongoDB 설치 (MacOS용)
+터미널에서 아래와 같이 입력하시면 됩니다.
+
+1. >xcode-select --install
+
+2. >brew tap mongodb/brew
+
+    (Homebrew 설치가 안 되있으면 설치 필요)
+
+3. >brew install mongodb-community@5.0
+
+4. >mongod 
+
+5. >mongo
+
+-> 오류나면 ??
+
+6. >mongod --config /usr/local/etc/mongod.conf --fork
+
+7. >npm i mongoose
+
+8. mongo 실행시켜서 아이피주소 받는다.
+mongodb://127.0.0.1:27017/
