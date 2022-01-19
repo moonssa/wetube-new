@@ -173,3 +173,10 @@ CRUD :
 - read
 - update
 - delete
+
+
+> "hello, hash, 333".split(",").map(word => `#${word}`)
+
+> mongo
+> use wetube (dbname)
+> use collections
