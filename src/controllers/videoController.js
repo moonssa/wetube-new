@@ -62,4 +62,9 @@ export const postUpload = async (req, res) => {
 
 export const search = (req, res) => res.send("<h1>Search Videos</h1>");
 export const upload = (req, res) => res.send("<h1>Upload Videos</h1>");
-export const deleteVideo = (req, res) => res.send("<h1>Delete Videos</h1>");
+
+export const deleteVideo = async(req, res) => {
+  const {id} = req.params;
+  await Video.findByIdAndDelete(id);
+  return res.redirect("/");
+}
