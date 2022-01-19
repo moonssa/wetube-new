@@ -186,3 +186,11 @@ CRUD :
 http://regexpal.com
 
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Regular_Expressions
+
+
+mongoose 에서 middleware 제공.
+예) video영상 저장하기전에 여러 확인 작업 거치고 db 저장.
+이때 제공하는 함수가 미들웨어.
+
+---
+shift-option-F  포매터
