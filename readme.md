@@ -180,3 +180,9 @@ CRUD :
 > mongo
 > use wetube (dbname)
 > use collections
+
+
+<mongoDB id  regular expression>
+http://regexpal.com
+
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Regular_Expressions
