@@ -192,5 +192,25 @@ mongoose 에서 middleware 제공.
 예) video영상 저장하기전에 여러 확인 작업 거치고 db 저장.
 이때 제공하는 함수가 미들웨어.
 
+DB생성 전에 model.pre 라는 미들웨어를 만들어 일정 작업 후 Db에 저장. 
+```
+videoSchema.pre("save", async function () {
+  this.hashtags = this.hashtags[0]
+    .split(",")
+    .map((word) => (word.startsWith("#") ? word : `#${word}`));
+});
+```
+
+models.static  을 이용해서 hashtags 함수 구현가능하다.
+```
+videoSchema.static("formatHashtags", function (hashtags) {
+  return hashtags
+    .split(",")
+    .map((word) => (word.startsWith("#") ? word : `#${word.trim()}`));
+});
+```
+
+
+
 ---
 shift-option-F  포매터
