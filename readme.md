@@ -221,3 +221,7 @@ https://emn178.github.io/online-tools/sha256.html
 bcrypt
 
 https://www.npmjs.com/package/bcrypt
+
+
+$or 연산자는 둘 이상의 조건에 대해 논리적 OR 연산을 수행하고 조건 중 하나 이상을 충족하는 문서를 선택합니다.
+https://docs.mongodb.com/manual/reference/operator/query/or/#mongodb-query-op.-or
