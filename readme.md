@@ -214,3 +214,10 @@ videoSchema.static("formatHashtags", function (hashtags) {
 
 ---
 shift-option-F  포매터
+
+해쉬함수 테스트
+https://emn178.github.io/online-tools/sha256.html
+
+bcrypt
+
+https://www.npmjs.com/package/bcrypt
