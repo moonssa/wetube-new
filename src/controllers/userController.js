@@ -10,14 +10,14 @@ export const postJoin = async (req, res) => {
   const dataExist = await User.exists({$or: [{username},{email}]});
 
   if(password !== passwordconfirm){
-    return res.render("join", {
+    return res.status(400).render("join", {
         pageTitle: "Join",
         errorMessage: "Password confirmation does not match.",
       });
   }
   if (dataExist) {
     console.log("data already exist");
-    return res.render("join", {
+    return res.status(400).render("join", {
       pageTitle: "Join",
       errorMessage: "This username/email  is taken.",
     });
@@ -33,7 +33,7 @@ export const postJoin = async (req, res) => {
     });
     return res.render("login", {pageTitle: "Login"});
   } catch (error) {
-        return res.render("join", {
+        return res.status(400).dataExistrender("join", {
             pageTitle: "Join"
       });
   }
