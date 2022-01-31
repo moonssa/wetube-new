@@ -235,3 +235,14 @@ user.passwordHash: DB에 해시화되서 저장된 비밀번호
 const match = await bcrypt.compare(password, user.passwordHash);
 ```
 https://www.npmjs.com/package/bcrypt
+
+
+session : back-end 브라우저 간에 어떤 활동을 했는지 기억하는 것. 일정 시간이 지나면 그 기록은 지워짐.
+-> 작동 위해서는 브라우저와 백엔드간에 쿠키를 교환.
+
+express-session
+Express용 세션 미들웨어
+세션 데이터는 쿠키 자체에 저장되지 않고 세션 ID에만 저장됩니다. 세션 데이터는 서버 측에 저장됩니다.
+
+npm i express-session
+https://www.npmjs.com/package/express-session
