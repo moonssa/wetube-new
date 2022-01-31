@@ -24,10 +24,23 @@ app.use(
 );
 
 // 쿠키 내용 확인하려고 임시로 미들웨어 만듬.
-
+/*
 app.use((req,res,next) => {
     console.log(req.headers);
     next();
+});
+*/
+
+app.use ((req, res,next) => {
+    req.sessionStore.all((error, sessions) => {
+        console.log(sessions);
+        next();
+    });
+});
+
+app.get("/add-one", (req, res, next) => {
+    req.session.potato += 1;
+    return res.send(`${req.session.id} ...... ${req.session.potato}`);
 });
 
 app.use("/", rootRouter);
