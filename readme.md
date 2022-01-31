@@ -225,3 +225,13 @@ https://www.npmjs.com/package/bcrypt
 
 $or 연산자는 둘 이상의 조건에 대해 논리적 OR 연산을 수행하고 조건 중 하나 이상을 충족하는 문서를 선택합니다.
 https://docs.mongodb.com/manual/reference/operator/query/or/#mongodb-query-op.-or
+
+
+bcrypt를 이용해서 비밀번호 비교
+
+password: 유저가 입력한 비밀번호
+user.passwordHash: DB에 해시화되서 저장된 비밀번호
+```
+const match = await bcrypt.compare(password, user.passwordHash);
+```
+https://www.npmjs.com/package/bcrypt
