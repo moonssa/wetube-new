@@ -281,3 +281,26 @@ connect-mongo
 Typescript로 작성된 Connect 및 Express용 MongoDB 세션 저장소.
 npm i connect-mongo
 https://www.npmjs.com/package/connect-mongo
+
+
+
+Set-Cookie
+Set-Cookie HTTP 응답 헤더는 서버에서 사용자 브라우저에 쿠키를 전송하기 위해 사용됩니다.
+https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Set-Cookie
+
+쿠키에 설정가능한 옵션
+Domain
+쿠키가 적용되어야 하는 호스트를 지정.
+
+Expires
+HTTP 타임스템프로 기록된 쿠키의 최대 생존 시간(수명).
+
+Max-Age
+쿠키가 만료될 때 까지의 시간 (밀리세컨드)
+
+secret
+이것은 세션 ID 쿠키에 서명하는 데 사용되는 비밀입니다.
+https://www.npmjs.com/package/express-session
+
+COOKIE_SECRET에 넣을 랜덤 문자열 생성 사이트
+https://randomkeygen.com/
