@@ -274,3 +274,10 @@ next()
 })
 ```
 https://expressjs.com/ko/api.html#res.locals
+
+
+session 을 mongoDB에 저장하기 위해서..
+connect-mongo
+Typescript로 작성된 Connect 및 Express용 MongoDB 세션 저장소.
+npm i connect-mongo
+https://www.npmjs.com/package/connect-mongo
