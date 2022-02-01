@@ -304,3 +304,13 @@ https://www.npmjs.com/package/express-session
 
 COOKIE_SECRET에 넣을 랜덤 문자열 생성 사이트
 https://randomkeygen.com/
+
+
+
+dotenv
+Dotenv는 .env 파일에서 process.env로 환경 변수를 로드하는 제로 종속성 모듈입니다.
+npm i dotenv
+https://www.npmjs.com/package/dotenv
+
+방법1. import dotenv from "dotenv", dotenv.config()
+방법2. import "dotenv/config"
