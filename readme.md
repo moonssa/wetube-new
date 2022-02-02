@@ -338,3 +338,27 @@ https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-
 
 Creating an OAuth App (OAuth앱 만들기)
 https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app
+
+
+
+Scopes for OAuth Apps
+OAuth 앱은 초기 리디렉션에서 범위를 요청할 수 있습니다. %20을 사용하여 공백으로 구분하여 여러 범위를 지정할 수 있습니다.
+// 사용 예시
+```
+https://github.com/login/oauth/authorize?client_id=...&scope=user%20repo_deployment
+```
+https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps
+
+URLSearchParams
+URLSearchParams 인터페이스는 URL의 쿼리 문자열에 대해 작업할 수 있는 유틸리티 메서드를 정의합니다.
+https://developer.mozilla.org/ko/docs/Web/API/URLSearchParams
+
+URLSearchParams.toString()
+toString() 은 URLSearchParams 인터페이스의 메소드로서, URL에서 사용할 수 있는 쿼리 문자열을 리턴합니다.
+https://developer.mozilla.org/ko/docs/Web/API/URLSearchParams/toString
+
+
+
+fetch
+npm i node-fetch
+
