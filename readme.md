@@ -314,3 +314,27 @@ https://www.npmjs.com/package/dotenv
 
 방법1. import dotenv from "dotenv", dotenv.config()
 방법2. import "dotenv/config"
+
+
+Authorizing OAuth Apps
+다른 사용자가 OAuth 앱을 승인하도록 할 수 있습니다.
+GitHub의 OAuth 구현은 웹 브라우저에 대한 액세스 권한이 없는 앱에 대한 표준 인증 코드 부여 유형 및 
+OAuth 2.0 장치 인증 부여를 지원합니다.
+
+Web application flow
+웹 애플리케이션 흐름: 브라우저에서 실행되는 표준 OAuth 앱에 대해 사용자에게 권한을 부여하는 데 사용됩니다.
+앱 사용자에게 권한을 부여하는 웹 애플리케이션 흐름은 다음과 같습니다.
+1. 로그인하려는 사이트에서 유저의 GitHub identity를 request하기 위해 유저를 GitHub 페이지로 리다이렉트시킵니다.
+2. 유저는 리다이렉트된 GitHub에서 승인을 하고, GitHub에 의해 다시 로그인하려는 사이트로 리다이렉트됩니다.
+3. 로그인 하려는 사이트는 유저의 액세스 토큰을 통해 API에 접근합니다.
+https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps
+
+깃허브 OAuth Apps Setting
+GitHub API를 사용하기 위해 등록한 애플리케이션입니다.
+https://github.com/settings/developers
+
+Scopes for OAuth Apps (OAuth 앱의 범위)
+https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps
+
+Creating an OAuth App (OAuth앱 만들기)
+https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app
