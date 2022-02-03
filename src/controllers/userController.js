@@ -128,24 +128,21 @@ export const finishGithubLogin = async (req, res) => {
     if(!emailObj){
       return res.redirect("/login");
     }
-    const existingUser = await User.findOne({email:emailObj.email});
-    if(existingUser){
-      req.session.loggedIn = true;
-      req.session.user = existingUser;
-      return res.redirect("/");
-    }
-    const user = await User.create({
+    let user = await User.findOne({email:emailObj.email});
+    if(!user){
+      user = await User.create({
+      avatarUrl: userData.avatar_url,
       name: userData.name,
       email: emailObj.email,
       username: userData.login,
       password:"",
       socialOnly: true,
       location: userData.location,
-    });
+      });
+    }
     req.session.loggedIn = true;
     req.session.user = user;
     return res.redirect("/");
-    
   } else {
     // render를 사용하면  http://localhost:4000/users/github/finish?code=d65d0745b401d50aedeb url이 노출된다.
     // return res.render("login", { pageTitle: "Login" });
@@ -153,7 +150,10 @@ export const finishGithubLogin = async (req, res) => {
   }
 };
 
+export const logout = (req, res) => {
+  req.session.destroy();
+  return res.redirect("/");
+}
 export const edit = (req, res) => res.send("<h1>Edit User</h1>");
 export const remove = (req, res) => res.send("<h1>Remove User</h1>");
 export const see = (req, res) => res.send("<h1> See User</h1>");
-export const logout = (req, res) => res.send("<h1> Log out User</h1>");
