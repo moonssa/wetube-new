@@ -11,14 +11,26 @@ import {
   postChangePasswd,
 } from "../controllers/userController";
 
-import { protectorMiddleware, publicOnlyMiddleware } from "../middlewares";
+import {
+  protectorMiddleware,
+  publicOnlyMiddleware,
+  uploadFiles,
+} from "../middlewares";
 
 const userRouter = express.Router();
 userRouter.get("/:id(\\d+)", see);
 userRouter.get("/github/start", publicOnlyMiddleware, startGithubLogin);
 userRouter.get("/github/finish", publicOnlyMiddleware, finishGithubLogin);
-userRouter.route("/edit").all(protectorMiddleware).get(getEdit).post(postEdit);
-userRouter.route("/change-passwd").all(protectorMiddleware).get(getChangePasswd).post(postChangePasswd);
+userRouter
+  .route("/edit")
+  .all(protectorMiddleware)
+  .get(getEdit)
+  .post(uploadFiles.single("avatar"), postEdit);
+userRouter
+  .route("/change-passwd")
+  .all(protectorMiddleware)
+  .get(getChangePasswd)
+  .post(postChangePasswd);
 userRouter.get("/remove", remove);
 userRouter.get("/logout", protectorMiddleware, logout);
 

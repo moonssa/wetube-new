@@ -163,7 +163,10 @@ export const postEdit = async (req, res) => {
       user: { _id },
     },
     body: { name, email, username, location },
+    file,
   } = req;
+
+  console.log(req.body,req.file);
 
   // email, username 수정시 같은 이메일 어드레스나 유저네임이 기존에 존재하는지 체크 후 업데이트 한다.
   //const dataExist = await User.exists({$and :[ {$not:{_id}}, { $or: [{ username }, { email } ] }]});
@@ -219,6 +222,7 @@ export const postChangePasswd = async(req, res) => {
     },
     body: { oldPassword, newPassword, confirmPassword },
   } = req;
+
 
   const user = await User.findById(_id);
   const ok = await bcrypt.compare(oldPassword, user.password);

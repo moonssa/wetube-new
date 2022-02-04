@@ -371,3 +371,10 @@ GET https://api.github.com/user
 ```
 https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps#3-use-the-access-token-to-access-the-api
 
+*file-upload - multer
+https://www.npmjs.com/package/multer
+
+1. > npm i multer
+2. middlewares.js 에 
+> export const uploadFiles = multer({dest: "uploads/"});
+3. router에서 uploadfiles 이용한다. 
