@@ -160,13 +160,13 @@ export const getEdit = (req, res) => {
 export const postEdit = async (req, res) => {
   const {
     session: {
-      user: { _id },
+      user: { _id, avartarUrl },
     },
     body: { name, email, username, location },
     file,
   } = req;
 
-  console.log(req.body,req.file);
+  console.log(file);
 
   // email, username 수정시 같은 이메일 어드레스나 유저네임이 기존에 존재하는지 체크 후 업데이트 한다.
   //const dataExist = await User.exists({$and :[ {$not:{_id}}, { $or: [{ username }, { email } ] }]});
@@ -199,6 +199,7 @@ export const postEdit = async (req, res) => {
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
+      avatarUrl: file ? file.path : avartarUrl,
       name,
       email,
       username,
@@ -215,7 +216,7 @@ export const postEdit = async (req, res) => {
 export const getChangePasswd = (req, res) => {
   return res.render("users/change-passwd", { pageTitle: "Change Password" });
 };
-export const postChangePasswd = async(req, res) => {
+export const postChangePasswd = async (req, res) => {
   const {
     session: {
       user: { _id },
@@ -223,18 +224,16 @@ export const postChangePasswd = async(req, res) => {
     body: { oldPassword, newPassword, confirmPassword },
   } = req;
 
-
   const user = await User.findById(_id);
   const ok = await bcrypt.compare(oldPassword, user.password);
-  if (!ok){
+  if (!ok) {
     return res.status(400).render("users/change-passwd", {
       pageTitle: "Change Password",
       errorMessage: "old password is incorrect.",
     });
   }
-  
+
   if (newPassword !== confirmPassword) {
-    
     return res.status(400).render("users/change-passwd", {
       pageTitle: "Change Password",
       errorMessage: "password is not matched!!",

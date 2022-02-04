@@ -47,6 +47,8 @@ app.get("/add-one", (req, res, next) => {
     return res.send(`${req.session.id} ...... ${req.session.potato}`);
 });
 
+//express에게 upload url을 알려주어야 한다.
+app.use("/uploads", express.static("uploads"))
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
