@@ -157,7 +157,7 @@ export const logout = (req, res) => {
 export const getEdit = (req, res) => {
   return res.render("edit-profile", { pageTitle: "Edit Profile" });
 };
-export const postEdit = async(req, res) => {
+export const postEdit = async (req, res) => {
   const {
     session: {
       user: { _id },
@@ -165,7 +165,36 @@ export const postEdit = async(req, res) => {
     body: { name, email, username, location },
   } = req;
 
-  const updatedUser = await User.findByIdAndUpdate(_id, 
+  // email, username 수정시 같은 이메일 어드레스나 유저네임이 기존에 존재하는지 체크 후 업데이트 한다.
+  //const dataExist = await User.exists({$and :[ {$not:{_id}}, { $or: [{ username }, { email } ] }]});
+  /*
+  const findUsername = await User.findOne({username});
+  const findEmail = await User.findOne({email});
+  if (findUsername && findUsername._id !== _id) {
+    console.log("1111");
+    return res
+      .status(400)
+      .render("edit-profile", {
+        pageTitle: "Edit Profile",
+        errorMessage:
+          "This username or email is already occupied!",
+      });
+  }
+
+  if (findEmail && findEmail._id !== _id) {
+    console.log("2222");
+    return res
+      .status(400)
+      .render("edit-profile", {
+        pageTitle: "Edit Profile",
+        errorMessage:
+          "This username or email is already occupied!",
+      });
+  }
+  */
+
+  const updatedUser = await User.findByIdAndUpdate(
+    _id,
     {
       name,
       email,
@@ -175,7 +204,42 @@ export const postEdit = async(req, res) => {
     { new: true }
   );
   req.session.user = updatedUser;
-  return res.redirect("/users/edit")
+  console.log("*** updated User");
+  console.log(updatedUser);
+  return res.redirect("/users/edit");
+};
+
+export const getChangePasswd = (req, res) => {
+  return res.render("users/change-passwd", { pageTitle: "Change Password" });
+};
+export const postChangePasswd = async(req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+    body: { oldPassword, newPassword, confirmPassword },
+  } = req;
+
+  const user = await User.findById(_id);
+  const ok = await bcrypt.compare(oldPassword, user.password);
+  if (!ok){
+    return res.status(400).render("users/change-passwd", {
+      pageTitle: "Change Password",
+      errorMessage: "old password is incorrect.",
+    });
+  }
+  
+  if (newPassword !== confirmPassword) {
+    
+    return res.status(400).render("users/change-passwd", {
+      pageTitle: "Change Password",
+      errorMessage: "password is not matched!!",
+    });
+  }
+
+  user.password = newPassword;
+  await user.save();
+  return res.redirect("/users/logout");
 };
 
 export const remove = (req, res) => res.send("<h1>Remove User</h1>");
