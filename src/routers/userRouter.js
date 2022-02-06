@@ -18,20 +18,20 @@ import {
 } from "../middlewares";
 
 const userRouter = express.Router();
-userRouter.get("/:id(\\d+)", see);
 userRouter.get("/github/start", publicOnlyMiddleware, startGithubLogin);
 userRouter.get("/github/finish", publicOnlyMiddleware, finishGithubLogin);
 userRouter
-  .route("/edit")
-  .all(protectorMiddleware)
-  .get(getEdit)
-  .post(avatarUpload.single("avatar"), postEdit);
+.route("/edit")
+.all(protectorMiddleware)
+.get(getEdit)
+.post(avatarUpload.single("avatar"), postEdit);
 userRouter
-  .route("/change-passwd")
-  .all(protectorMiddleware)
-  .get(getChangePasswd)
-  .post(postChangePasswd);
+.route("/change-passwd")
+.all(protectorMiddleware)
+.get(getChangePasswd)
+.post(postChangePasswd);
 userRouter.get("/remove", remove);
 userRouter.get("/logout", protectorMiddleware, logout);
+userRouter.get("/:id", see);
 
 export default userRouter;

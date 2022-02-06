@@ -246,4 +246,10 @@ export const postChangePasswd = async (req, res) => {
 };
 
 export const remove = (req, res) => res.send("<h1>Remove User</h1>");
-export const see = (req, res) => res.send("<h1> See User</h1>");
+export const see = async (req, res) => {
+  const {id} = req.params;
+  const user = await User.findById(id);
+  res.render("users/my-profile", {
+    pageTitle: user.name, user,
+  });
+}
