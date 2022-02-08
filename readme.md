@@ -444,3 +444,41 @@ https://sass-lang.com/documentation/variables
 @import CSS at-rule은 다른 스타일 시트에서 스타일 규칙을 가져오는 데 사용됩니다.
 https://developer.mozilla.org/en-US/docs/Web/CSS/@import
 https://sass-lang.com/documentation/at-rules/import#plain-css-imports
+
+
+MiniCssExtractPlugin
+이 플러그인은 CSS를 별도의 파일로 추출합니다. CSS가 포함된 JS 파일별로 CSS 파일을 생성합니다. mini-css-extract-plugin을 css-loader와 결합하는 것이 좋습니다.
+npm install --save-dev mini-css-extract-plugin
+https://webpack.kr/plugins/mini-css-extract-plugin/
+
+MiniCssExtractPlugin Options
+```
+plugins: [new MiniCssExtractPlugin({ filename: "css/style.css" })]
+```
+https://webpack.js.org/plugins/mini-css-extract-plugin/#publicpath
+
+CssMinimizerWebpackPlugin
+https://webpack.kr/plugins/css-minimizer-webpack-plugin/
+
+-------------------------------
+
+Watch and WatchOptions
+Webpack은 파일이 변경될 때마다 이를 감지하여 다시 컴파일 할 수 있습니다.
+
+watch
+watch 모드를 켭니다. 이제 초기 빌드 후 webpack은 해석 된 파일의 변경 사항을 계속 감시합니다. (webpack.config.js에 entry에 지정한 파일을 감시한다.)
+https://webpack.kr/configuration/watch/
+
+clean : true
+clean 모드를 켭니다. 
+output 빌드전에 기존 디렉토리(assets)를 지웁니다.
+
+Nodemon
+nodemon은 디렉토리의 파일 변경이 감지되면 노드 응용 프로그램을 자동으로 다시 시작하여 node.js 기반 응용 프로그램을 개발하는 데 도움이 되는 도구입니다.
+https://github.com/remy/nodemon
+
+Sample nodemon.json
+https://github.com/remy/nodemon/blob/master/doc/sample-nodemon.md
+
+Nodemon Config file
+https://github.com/remy/nodemon#config-files
