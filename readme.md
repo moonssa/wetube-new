@@ -378,3 +378,69 @@ https://www.npmjs.com/package/multer
 2. middlewares.js 에 
 > export const uploadFiles = multer({dest: "uploads/"});
 3. router에서 uploadfiles 이용한다. 
+
+
+Webpack
+https://blog.ag-grid.com/webpack-tutorial-understanding-how-it-works/
+
+1. webpack 설치
+npm i webpack webpack-cli -D
+
+Webpack 시작하기: https://webpack.kr/guides/getting-started/
+Webpack 설정: https://webpack.kr/concepts/configuration/
+
+Typescript환경에서 Webpack 설정하기
+npm install --save-dev typescript ts-loader webpack webpack-cli
+https://webpack.kr/guides/typescript/
+
+
+
+path.resolve([...paths])
+path.resolve() 메서드는 경로 세그먼트 시퀀스를 절대 경로로 해석하는 데 사용됩니다. 경로 세그먼트가 전달되지 않으면 path.resolve()는 현재 작업 디렉토리의 절대 경로를 반환합니다.
+(__dirname: 현재 파일 위치의 절대 경로)
+
+```
+path.resolve('/foo/bar', './baz');
+// Returns: '/foo/bar/baz'
+```
+https://nodejs.org/api/path.html#pathresolvepaths
+
+2. babel-loader
+npm install babel-loader -D
+https://github.com/babel/babel-loader
+
+webpack loader
+https://webpack.kr/loaders/
+
+webpack babel-loader
+https://webpack.kr/loaders/babel-loader/
+
+
+3. mode를 설정해주지 않으면 기본적으로 production으로 설정되어 client/js폴더 내에 작성한 main.js를 변환했을 때, 빈 파일로 나올 수 있다. module.export안에 mode: "development"로 설정.
+
+----
+
+sass, sass-loader, css-loader, style-loader 설치
+npm i sass sass-loader css-loader style-loader -D
+
+sass-loader
+Sass/SCSS 파일을 로드하고 CSS로 컴파일합니다.
+https://webpack.js.org/loaders/sass-loader/
+
+SCSS
+Variable
+Sass 변수는 간단합니다. $로 시작하는 이름에 값을 할당하면 값 자체 대신 해당 이름을 참조할 수 있습니다.
+```
+$base-color: #c6538c;
+$border-dark: rgba($base-color, 0.88);
+
+.alert {
+border: 1px solid $border-dark;
+}
+```
+https://sass-lang.com/documentation/variables
+
+@import
+@import CSS at-rule은 다른 스타일 시트에서 스타일 규칙을 가져오는 데 사용됩니다.
+https://developer.mozilla.org/en-US/docs/Web/CSS/@import
+https://sass-lang.com/documentation/at-rules/import#plain-css-imports

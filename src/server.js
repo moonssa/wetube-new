@@ -49,6 +49,7 @@ app.get("/add-one", (req, res, next) => {
 
 //express에게 upload url을 알려주어야 한다.
 app.use("/uploads", express.static("uploads"))
+app.use("/static", express.static("assets"))
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
