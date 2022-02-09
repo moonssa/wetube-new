@@ -482,3 +482,13 @@ https://github.com/remy/nodemon/blob/master/doc/sample-nodemon.md
 
 Nodemon Config file
 https://github.com/remy/nodemon#config-files
+
+font
+
+https://cdnjs.com/libraries/font-awesome
+
+Reset CSS
+https://meyerweb.com/eric/tools/css/reset
+
+FontAwesome CDN
+https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css
