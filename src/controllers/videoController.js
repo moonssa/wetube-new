@@ -2,7 +2,9 @@ import Video from "../models/Video";
 import User from "../models/User";
 
 export const home = async (req, res) => {
-  const videos = await Video.find({}).sort({ createdAt: "desc" }).populate("owner");
+  const videos = await Video.find({})
+    .sort({ createdAt: "desc" })
+    .populate("owner");
   return res.render("home", { pageTitle: `Home`, videos });
 };
 
@@ -28,7 +30,7 @@ export const getEdit = async (req, res) => {
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video not found" });
   }
-  if(String(video.owner) !== String(_id)){
+  if (String(video.owner) !== String(_id)) {
     return res.status(403).redirect("/");
   }
 
@@ -42,13 +44,12 @@ export const postEdit = async (req, res) => {
     user: { _id },
   } = req.session;
 
-
   const video = await Video.exists({ _id: id });
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video not found" });
   }
 
-  if(String(video.owner) !== String(_id)){
+  if (String(video.owner) !== String(_id)) {
     return res.status(403).redirect("/");
   }
 
@@ -121,10 +122,10 @@ export const deleteVideo = async (req, res) => {
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video not found" });
   }
-  if(String(video.owner) !== String(_id)){
+  if (String(video.owner) !== String(_id)) {
     return res.status(403).redirect("/");
   }
-  
+
   await Video.findByIdAndDelete(id);
   return res.redirect("/");
 };
