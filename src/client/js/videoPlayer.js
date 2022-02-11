@@ -6,7 +6,7 @@ const totalTime = document.getElementById("totalTime");
 const volumeRange = document.getElementById("volume");
 
 video.volume = 0.5;
-let volumeValue =video.volume;
+let volumeValue = video.volume;
 
 const handlePlayClick = (e) => {
   if (video.paused) {
@@ -32,26 +32,28 @@ const handleVolumeRange = (event) => {
     target: { value },
   } = event;
 
-  if(video.muted){
-      video.muted = false;
-      muteBtn.innerText = "Muted";
+  if (video.muted) {
+    video.muted = false;
+    muteBtn.innerText = "Muted";
   }
-  volumeValue = value;  // memory previous volume
+  volumeValue = value; // memory previous volume
   video.volume = value;
 };
+const formatTime = (seconds) =>
+  new Date(seconds * 1000).toISOString().substr(11, 8);
 
-const handleLoadedMetadata = () =>{
-    totalTime.innerText = Math.floor(video.duration);
-}
+const handleLoadedMetadata = () => {
+  totalTime.innerText = formatTime(Math.floor(video.duration));
+};
 
 const handleTimeUpdate = () => {
-    currentTime.innerText = Math.floor(video.currentTime)
-}
+  currentTime.innerText = formatTime(Math.floor(video.currentTime));
+};
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeRange);
 video.addEventListener("loadedmetadata", handleLoadedMetadata);
-video.addEventListener("timeupdate", handleTimeUpdate)
+video.addEventListener("timeupdate", handleTimeUpdate);
 
 //video.addEventListener("play", handlePlay);
 //video.addEventListener("pause", handlePause);
