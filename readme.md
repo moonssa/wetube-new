@@ -542,3 +542,7 @@ Document.fullscreen (en-US) (더 이상 사용되지 않는 속성)
 문서에 현재 full-screen mode로 표시되는 요소가 있는 경우 true, 그렇지 않으면 false의 Boolean 값입니다.
 
 https://developer.mozilla.org/ko/docs/Web/API/Fullscreen_API
+
+<동영상 녹화>
+
+https://developer.mozilla.org/ko/docs/Web/API/MediaDevices/getUserMedia
