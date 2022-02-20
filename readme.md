@@ -546,3 +546,67 @@ https://developer.mozilla.org/ko/docs/Web/API/Fullscreen_API
 <동영상 녹화>
 
 https://developer.mozilla.org/ko/docs/Web/API/MediaDevices/getUserMedia
+
+
+
+ffmpeg 
+
+FFmpeg
+오디오 및 비디오를 기록, 변환 및 스트리밍하는 완벽한 크로스 플랫폼 솔루션입니다. FFmpeg는 인간과 기계가 만든 거의 모든 것을 디코딩, 인코딩, 트랜스코딩, mux, demux, 스트리밍, 필터링 및 재생할 수 있는 최고의 멀티미디어 프레임워크입니다.
+https://www.ffmpeg.org/
+
+FFmpeg WebAssembly
+WebAssembly에서 제공하는 브라우저 및 노드용 FFmpeg
+ffmpeg.wasm은 FFmpeg의 순수한 Webassembly/Javascript 포트입니다. 그것은 비디오 및 오디오 녹음, 변환, 스트리밍 등을 브라우저 내부에서 할 수 있도록 합니다.
+FFmpeg WebAssembly를 사용하는 이유는 FFmpeg를 사용해서 브라우저로 하여금 비디오 파일을 변환하기 위함이다.
+npm install @ffmpeg/ffmpeg @ffmpeg/core
+https://github.com/ffmpegwasm/ffmpeg.wasm
+https://www.npmjs.com/package/@ffmpeg/ffmpeg
+
+WebAssembly
+WebAssembly(Wasm)는 스택 기반 가상 머신을 위한 이진 명령 형식입니다. Wasm은 프로그래밍 언어를 위한 이식 가능한 컴파일 대상으로 설계되어 클라이언트 및 서버 응용 프로그램을 위해 웹에 배포할 수 있습니다.
+
+웹 어셈블리는 자바스크립트의 무덤일까?
+https://www.youtube.com/watch?v=KjgDxBLv0bM
+
+맥에서 FFMpeg설치하기
+brew install ffmpeg
+
+<ffmpeg 에러 날때 조치 : 슈가님 글>
+1. http://localhost:4000/node_modules/@ffmpeg/core/dist/ffmpeg-core.js 404 (Not Found) 또는
+createFFmpegCore is not defined 오류 해결 방법
+(@ffmpeg/ffmpeg": "^0.10.0 이상으로 진행시)
+
+위와 같은 오류가 뜨시는 분들은 http://localhost:3000/node_modules/@ffmpeg/core/dist/에서 ffmpeg-core.js, ffmpeg-core.wasm, ffmpeg-core.worker.js파일들을 찾지 못해 생기는 에러이기 때문에 아래와 같이 corePath를 지정해주시면 됩니다.
+https://github.com/ffmpegwasm/ffmpeg.wasm#why-it-doesnt-work-in-my-local-environment
+```
+createFFmpeg({
+corePath: 'https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js',
+log: true
+});
+```
+
+(위의 1번 다른 해결 방법)
+기존 FFmpeg를 삭제하시고, 다운그레이드된 버전으로 설치하시면 됩니다.
+npm i @ffmpeg/ffmpeg@0.9.7 @ffmpeg/core@0.8.5
+
+2. Uncaught (in promise) ReferenceError: SharedArrayBuffer is not defined 오류 해결 방법
+FFmpeg를 실행했을 때, 콘솔창에 위와 같은 오류가 난다면 server.js에 app.set()아래에 함수를 추가해주시면 됩니다.
+
+오류 원인 : SharedArrayBuffer는 cross-origin isolated된 페이지에서만 사용할 수 있습니다. 따라서 ffmpeg.wasm을 사용하려면 Cross-Origin-Embedder-Policy: require-corp 및 Cross-Origin-Opener-Policy: same-origin를 header에 설정해 자체 서버를 호스팅해야 합니다.
+https://github.com/ffmpegwasm/ffmpeg.wasm/issues/263
+
+// server.js
+```
+app.use((req, res, next) => {
+res.header("Cross-Origin-Embedder-Policy", "require-corp");
+res.header("Cross-Origin-Opener-Policy", "same-origin");
+next();
+});
+```
+
+FFmpeg Usage
+https://github.com/ffmpegwasm/ffmpeg.wasm#usage
+
+FFmpeg API
+https://github.com/ffmpegwasm/ffmpeg.wasm/blob/master/docs/api.md#api
