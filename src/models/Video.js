@@ -9,6 +9,7 @@ const videoSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true, maxLength: 30 },
   description: { type: String, required: true, trim: true, minLength: 20 },
   fileUrl: {type: String, required: true},
+  thumbUrl: {type: String, required: true},
   createdAt: { type: Date, required: true, default: Date.now },
   owner: {type: mongoose.Schema.Types.ObjectId, required: true, ref:"User"},
   hashtags: [{ type: String }],
