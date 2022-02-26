@@ -610,3 +610,27 @@ https://github.com/ffmpegwasm/ffmpeg.wasm#usage
 
 FFmpeg API
 https://github.com/ffmpegwasm/ffmpeg.wasm/blob/master/docs/api.md#api
+
+
+Express Flash
+Express 애플리케이션용 플래시 메시지
+플래시는 플래시 메시지를 정의하고 요청을 리디렉션하지 않고 렌더링할 수 있는 기능이 있는 connect-flash의 확장입니다.
+npm i express-flash
+
+사용 예시
+```
+app.get('/', function (req, res) {
+req.flash('info', 'Welcome');
+res.render('index', {
+title: 'Home'
+})
+});
+app.get('/addFlash', function (req, res) {
+req.flash('info', 'Flash Message Added');
+res.redirect('/');
+});
+```
+https://www.npmjs.com/package/express-flash
+
+connect-flash
+https://www.npmjs.com/package/connect-flash
