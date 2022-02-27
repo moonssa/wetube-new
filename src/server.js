@@ -24,6 +24,7 @@ app.use(loggerMiddleware);
 
 // It parses incoming requests with urlencoded payloads and is based on body-parser.
 app.use(express.urlencoded({extended : true}));
+app.use(express.json());
 app.use(
     session({
         secret: process.env.COOKIE_SECRET,
