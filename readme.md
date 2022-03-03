@@ -652,3 +652,20 @@ https://expressjs.com/ko/api.html#express.json
 
 fetch()를 이용해서 JSON객체 보내기
 https://gomakethings.com/how-to-send-data-to-an-api-with-the-vanilla-js-fetch-method/#sending-data-as-a-json-object
+
+
+> npm install --save-dev @babel/cli
+packages.json file 수정 
+
+```
+ "scripts": {
+    "build:server": "babel src/init.js -d build",
+```
+nodemon 은 init.js 만 실행시켜주면 알아서 모두 실행됨.
+babel은 모든 파일을 일일히 실행시켜주어야 함.
+```
+ "scripts": {
+    "build:server": "babel src -d build",
+```
+
+> npm run:build server

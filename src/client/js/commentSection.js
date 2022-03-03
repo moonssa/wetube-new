@@ -1,6 +1,10 @@
 const videoContainer = document.getElementById("videoContainer");
 const form = document.getElementById("commentForm");
 
+const deleteComment=(event) => {
+    console.log(event.target.parentElement.getAttribute("data-id"));
+    // delete comment
+}
 const addComment = (text, id) => {
   const videoComments = document.querySelector(".video__comments ul");
   const newComment = document.createElement("li");
@@ -17,6 +21,7 @@ const addComment = (text, id) => {
   newComment.appendChild(span);
   newComment.appendChild(span2);
   videoComments.prepend(newComment);
+  span2.addEventListener("click", deleteComment);
 };
 
 const handleSubmit = async (event) => {
