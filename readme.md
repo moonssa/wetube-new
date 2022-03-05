@@ -669,3 +669,7 @@ babel은 모든 파일을 일일히 실행시켜주어야 함.
 ```
 
 > npm run:build server
+
+
+https://www.npmjs.com/package/multer-s3
+> npm install --save multer-s3
