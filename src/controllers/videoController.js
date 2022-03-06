@@ -102,7 +102,6 @@ export const postUpload = async (req, res) => {
 
 export const search = async (req, res) => {
   const { keyword } = req.query;
-  console.log("search keyword", keyword);
   let videos = [];
   if (keyword) {
     videos = await Video.find({
@@ -112,7 +111,6 @@ export const search = async (req, res) => {
         $regex: new RegExp(`${keyword}`, "i"),
       },
     }).populate("owner");
-    console.log("***", videos);
   }
   return res.render("search", { pageTitle: "Search", videos });
 };
