@@ -652,3 +652,25 @@ https://expressjs.com/ko/api.html#express.json
 
 fetch()를 이용해서 JSON객체 보내기
 https://gomakethings.com/how-to-send-data-to-an-api-with-the-vanilla-js-fetch-method/#sending-data-as-a-json-object
+
+<build>
+1. @babel/cli 설치
+npm install --save-dev @babel/cli
+Babel은 명령줄에서 파일을 컴파일하는 데 사용할 수 있는 내장 CLI와 함께 제공됩니다.
+https://babeljs.io/docs/en/babel-cli
+
+폴더 컴파일
+--out-dir 또는 -d 사용 가능
+```
+npx babel src --out-dir lib
+```
+https://babeljs.io/docs/en/babel-cli#compile-directories
+
+2. regeneratorRuntime
+Regenerator로 컴파일된 생성기 및 비동기 함수를 위한 독립 실행형 런타임입니다.
+
+// init.js
+```
+import "regenerator-runtime";
+```
+https://www.npmjs.com/package/regenerator-runtime
