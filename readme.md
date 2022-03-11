@@ -653,23 +653,24 @@ https://expressjs.com/ko/api.html#express.json
 fetch()를 이용해서 JSON객체 보내기
 https://gomakethings.com/how-to-send-data-to-an-api-with-the-vanilla-js-fetch-method/#sending-data-as-a-json-object
 
+<build>
+1. @babel/cli 설치
+npm install --save-dev @babel/cli
+Babel은 명령줄에서 파일을 컴파일하는 데 사용할 수 있는 내장 CLI와 함께 제공됩니다.
+https://babeljs.io/docs/en/babel-cli
 
-> npm install --save-dev @babel/cli
-packages.json file 수정 
-
+폴더 컴파일
+--out-dir 또는 -d 사용 가능
 ```
- "scripts": {
-    "build:server": "babel src/init.js -d build",
+npx babel src --out-dir lib
 ```
-nodemon 은 init.js 만 실행시켜주면 알아서 모두 실행됨.
-babel은 모든 파일을 일일히 실행시켜주어야 함.
+https://babeljs.io/docs/en/babel-cli#compile-directories
+
+2. regeneratorRuntime
+Regenerator로 컴파일된 생성기 및 비동기 함수를 위한 독립 실행형 런타임입니다.
+
+// init.js
 ```
- "scripts": {
-    "build:server": "babel src -d build",
+import "regenerator-runtime";
 ```
-
-> npm run:build server
-
-
-https://www.npmjs.com/package/multer-s3
-> npm install --save multer-s3
+https://www.npmjs.com/package/regenerator-runtime
