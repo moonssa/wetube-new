@@ -15,23 +15,25 @@ const loggerMiddleware = morgan("dev");
 
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
+/*
 app.use((req, res, next) => {
-    res.header("Cross-Origin-Embedder-Policy", "require-corp");
-    res.header("Cross-Origin-Opener-Policy", "same-origin");
-    next();
-    });
-app.use(loggerMiddleware); 
+  res.header("Cross-Origin-Embedder-Policy", "require-corp");
+  res.header("Cross-Origin-Opener-Policy", "same-origin");
+  next();
+});
+*/
+app.use(loggerMiddleware);
 
 // It parses incoming requests with urlencoded payloads and is based on body-parser.
-app.use(express.urlencoded({extended : true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
-    session({
-        secret: process.env.COOKIE_SECRET,
-        resave: false,
-        saveUninitialized: false,
-        store: MongoStore.create({mongoUrl: process.env.DB_URL})
-    })
+  session({
+    secret: process.env.COOKIE_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
+  })
 );
 
 app.use(flash());
@@ -53,19 +55,16 @@ app.use ((req, res,next) => {
 
 app.use(localsMiddleware);
 app.get("/add-one", (req, res, next) => {
-    req.session.potato += 1;
-    return res.send(`${req.session.id} ...... ${req.session.potato}`);
+  req.session.potato += 1;
+  return res.send(`${req.session.id} ...... ${req.session.potato}`);
 });
 
 //express에게 upload url을 알려주어야 한다.
-app.use("/uploads", express.static("uploads"))
-app.use("/static", express.static("assets"))
+app.use("/uploads", express.static("uploads"));
+app.use("/static", express.static("assets"));
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
 app.use("/api", apiRouter);
 
-
-
 export default app;
-

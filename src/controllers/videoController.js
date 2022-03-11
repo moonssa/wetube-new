@@ -68,13 +68,17 @@ export const postEdit = async (req, res) => {
 };
 
 export const getUpload = (req, res) => {
+  
+  res.header("Cross-Origin-Embedder-Policy", "require-corp");
+  res.header("Cross-Origin-Opener-Policy", "same-origin");
+  
   return res.render("upload", { pageTitle: "Upload" });
 };
 
 export const postUpload = async (req, res) => {
   const { video, thumb } = req.files;
   const { title, description, hashtags } = req.body;
-  //const { path: fileUrl } = req.file;
+
   const {
     user: { _id },
   } = req.session;
@@ -83,12 +87,8 @@ export const postUpload = async (req, res) => {
     const newVideo = await Video.create({
       title,
       description,
-      fileUrl: video[0].path,
-      thumbUrl: thumb[0].path,
-      /*
       fileUrl: video[0].location,
       thumbUrl: thumb[0].location,
-      */
       owner: _id,
       hashtags: Video.formatHashtags(hashtags),
     });

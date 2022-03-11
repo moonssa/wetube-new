@@ -674,3 +674,49 @@ Regenerator로 컴파일된 생성기 및 비동기 함수를 위한 독립 실�
 import "regenerator-runtime";
 ```
 https://www.npmjs.com/package/regenerator-runtime
+
+
+
+< AWS S3에서 버킷 생성 >
+
+AWS S3(Simple Storage Service)란?
+Simple Storage Service의 약자로 파일 서버의 역할을 하는 서비스다.
+https://s3.console.aws.amazon.com/s3/home
+
+IAM에서 API Key 생성
+여기서는 AWS S3 버킷에 파일을 업로드하기 위한 권한을 가진 API키 생성.
+이 API 키를 이용해서 AWS S3 버킷에 접근해서 파일을 업로드함
+
+IAM 리소스 -> 사용자 -> 사용자 추가 ->
+액세스 키 – 프로그래밍 방식 액세스
+AWS API, CLI, SDK 및 기타 개발 도구에 대해 액세스 키 ID 및 비밀 액세스 키를 활성화합니다.
+권한 설정 AmazonS3FullAccess
+https://console.aws.amazon.com/iamv2/home?#/home
+
+Multer S3 (AWS S3용 스트리밍 Multer 스토리지 엔진)
+npm i multer-s3
+npm i @types/multer-s3 -D (타입스크립트)
+https://www.npmjs.com/package/multer-s3
+
+AWS-SDK (JavaScript용 AWS SDK)
+npm i aws-sdk
+https://www.npmjs.com/package/aws-sdk
+
+AWS S3 설정
+```
+const s3 = new AWS.S3({
+credentials: {
+accessKeyId: process.env.AWS_ACCESS_KEY,
+secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+},
+});
+```
+
+multer(opts) (Multer옵션)
+dest
+업로드된 파일의 디렉터리입니다. storage가 설정되지 않고 dest가 설정된 경우 Multer는 임의의 파일 이름으로 dest경로에 파일을 저장하도록 구성된 DiskStorage 인스턴스를 생성합니다.
+storage가 설정되어 있으면 dest옵션은 무시됩니다.
+
+storage
+Multer를 통해 업로드된 파일 처리를 담당하는 StorageEngine입니다. storage는 dest보다 우선됩니다. (storage설정시 dest는 무시)
+https://www.npmjs.com/package/multer

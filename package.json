@@ -23,7 +23,7 @@
   "dependencies": {
     "@ffmpeg/core": "^0.8.5",
     "@ffmpeg/ffmpeg": "^0.9.7",
-    "aws-sdk": "^2.1087.0",
+    "aws-sdk": "^2.1091.0",
     "bcrypt": "^5.0.1",
     "connect-mongo": "^4.6.0",
     "dotenv": "^15.0.0",
