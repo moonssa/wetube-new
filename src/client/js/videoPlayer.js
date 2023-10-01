@@ -52,7 +52,7 @@ const handleVolumeRange = (event) => {
   video.volume = value;
 };
 const formatTime = (seconds) =>
-  new Date(seconds * 1000).toISOString().substr(11, 8);
+  new Date(seconds * 1000).toISOString().substring(15, 19);
 
 const handleLoadedMetadata = () => {
   totalTime.innerText = formatTime(Math.floor(video.duration));
@@ -101,7 +101,7 @@ const handleMouseLeave = () => {
 };
 
 const handlePlayKeyup = (event) => {
-  if (event.code == "Space") {
+  if (event.keyCode == "Space") {
     handlePlayClick();
   }
 };
@@ -112,6 +112,13 @@ const handleEnded = () => {
   fetch(`/api/videos/${id}/view`, {
     method: "POST",
   });
+};
+
+const handleExitFullscreen = () => {
+  const fullscreen = document.fullscreenElement;
+  if (!fullscreen) {
+    fullscreenBtnIcon.classList = "fas fa-expand";
+  }
 };
 
 playBtn.addEventListener("click", handlePlayClick);
@@ -129,5 +136,8 @@ videoContainer.addEventListener("mouseleave", handleMouseLeave);
 video.addEventListener("click", handlePlayClick);
 document.addEventListener("keyup", handlePlayKeyup);
 
-//video.addEventListener("play", handlePlay);
-//video.addEventListener("pause", handlePause);
+document.addEventListener("fullscreenchange", handleExitFullscreen);
+
+if (video.readyState > 2) {
+  handleLoadedMetadata();
+}
